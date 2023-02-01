@@ -1,0 +1,16 @@
+{
+    "name": "vinc0064/s4-sae-data",
+    "description": "Analyse de données",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Vinc0064\\S4SaeData\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aurélien VINCENT Harun SEZGIN Alix Payraudeau Fouad Behlia"
+        }
+    ],
+    "require": {}
+}
