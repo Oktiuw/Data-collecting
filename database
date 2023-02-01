@@ -1,0 +1,4 @@
+username : root
+password : root
+db_url : 10.31.11.27/mysql
+db_name : vinc0064_data
