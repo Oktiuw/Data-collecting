@@ -1,7 +1,8 @@
 {
-    "name": "vinc0064/s4-sae-data",
-    "description": "Analyse de données",
+    "name": "vinc0064/data",
+    "description": "Analyse données",
     "type": "project",
+    "license": "Copyleft",
     "autoload": {
         "psr-4": {
             "": "src/"
@@ -9,17 +10,21 @@
     },
     "authors": [
         {
-            "name": "Aurélien VINCENT Harun SEZGIN Alix Payraudeau Fouad Behlia"
-        }
+            "name": "Aurélien Vincent",
+            "email": "aurelien.vincent@etudiants.univ-reims.fr"
+}
+        
     ],
     "require": {
-      "ext-curl": "*",
-        "ext-json": "*",
-      "ext-simplexml": "*"
+      "ext-pdo": "*",
+      "ext-xml": "*",
+      "ext-json":"*"
     },
     "scripts": {
-        "start" : [
-          "php src/createToken.php"
-        ]
+        "start": ["php src/createToken.php","php src/example.php"],
+        "fix:cs": ["php vendor/bin/php-cs-fixer fix"]
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8"
     }
 }
