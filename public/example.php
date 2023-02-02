@@ -14,11 +14,9 @@ $data = array(
 
  "codeTypeNomenclature"=> "CATCAND"
 );
-$file = __DIR__ . '/vendor/requestClasses/postRequestSender.php';
-if (file_exists($file)) {
-    echo "Le fichier de la classe postRequestSender existe";
-} else {
-    echo "Le fichier de la classe postRequestSender n'existe pas";
-}
+
+
+
+
 
 ?>

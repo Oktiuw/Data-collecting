@@ -18,10 +18,11 @@
     "require": {
       "ext-pdo": "*",
       "ext-xml": "*",
-      "ext-json":"*"
+      "ext-json":"*",
+        "ext-curl": "*"
     },
     "scripts": {
-        "start": ["php src/createToken.php","php src/example.php"],
+        "start": ["php public/createToken.php"],
         "fix:cs": ["php vendor/bin/php-cs-fixer fix"]
     },
     "require-dev": {
