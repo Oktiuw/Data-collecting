@@ -4,7 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Vinc0064\\S4SaeData\\": "src/"
+            "": "src/"
         }
     },
     "authors": [
@@ -14,9 +14,12 @@
     ],
     "require": {
       "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+      "ext-simplexml": "*"
     },
     "scripts": {
-        "start" : ["php src/createToken.php"]
+        "start" : [
+          "php src/createToken.php"
+        ]
     }
 }
