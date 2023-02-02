@@ -21,15 +21,11 @@ curl_setopt_array($curl, array(
     ),
 ));
 $response = curl_exec($curl);
-if (!$response) {
-    echo curl_error($curl);
-}
+
 curl_close($curl);
 
-var_dump($response);
 $response = json_decode($response, true);
-
-
+var_dump($response['access_token']);
 
 // Utilisez le jeton d'accès pour effectuer d'autres requêtes avec l'API
 ?>
