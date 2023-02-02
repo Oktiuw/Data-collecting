@@ -12,5 +12,7 @@
             "name": "Aurélien VINCENT Harun SEZGIN Alix Payraudeau Fouad Behlia"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-curl": "*"
+    }
 }
