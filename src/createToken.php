@@ -25,7 +25,11 @@ $response = curl_exec($curl);
 curl_close($curl);
 
 $response = json_decode($response, true);
-var_dump($response['access_token']);
+if ($response) {
+    $data = array("access_token" => $response['access_token']);
+    $json_data = json_encode($data);
+    file_put_contents("access_token.json", $json_data);
+}
 
 // Utilisez le jeton d'accès pour effectuer d'autres requêtes avec l'API
 ?>
