@@ -1,0 +1,23 @@
+{
+    "name": "aurelien/s4-data",
+    "description": "Analyse donnees avec API",
+    "type": "project",
+    "require": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "ext-xml": "*",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aurelien VINCENT",
+            "email": "aurelien.vincent@etudiant.univ-reims.fr"
+        }
+    ]
+}
