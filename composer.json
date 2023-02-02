@@ -19,7 +19,8 @@
       "ext-pdo": "*",
       "ext-xml": "*",
       "ext-json":"*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-simplexml": "*"
     },
     "scripts": {
         "start": ["php public/createToken.php"],
