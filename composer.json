@@ -13,6 +13,10 @@
         }
     ],
     "require": {
-      "ext-curl": "*"
+      "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "scripts": {
+        "start" : ["php src/createToken.php"]
     }
 }
