@@ -23,7 +23,8 @@
     ],
     "scripts": {
         "start": [
-            "php src/createToken.php"
+            "php src/createToken.php",
+            "php public/test.php"
         ]
     }
 }

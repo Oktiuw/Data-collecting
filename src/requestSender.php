@@ -7,12 +7,13 @@ abstract class requestSender
     protected array $data;
     protected array $headers;
 
-    public function __construct(string $url,array $data=[],array $headers=[]){
-        $this->url=$url;
-        $this->data=$data;
-        $this->headers=$headers;
-        $this->accessToken=get_object_vars(json_decode(file_get_contents(__DIR__ . "\jsonFiles/access_token.json")))['access_token'];
-        $this->headers[]="Authorization: Bearer $this->accessToken";
+    public function __construct(string $url, array $data = [], array $headers = [])
+    {
+        $this->url = $url;
+        $this->data = $data;
+        $this->headers = $headers;
+        $this->accessToken = get_object_vars(json_decode(file_get_contents(__DIR__ . "/jsonFiles/access_token.json")))['access_token'];
+        $this->headers[] = "Authorization: Bearer $this->accessToken";
     }
 
     /**
@@ -28,8 +29,10 @@ abstract class requestSender
         $xml = simplexml_load_string($text);
         return json_encode($xml);
     }
-    public function saveJson(string $json,string $fileName){
-        file_put_contents(__DIR__ . "\..\public\jsonFiles/$fileName.json", $json);
+
+    public function saveJson(string $json, string $fileName)
+    {
+        file_put_contents(__DIR__ . "/../public/jsonFiles/$fileName.json", $json);
 
     }
 }
