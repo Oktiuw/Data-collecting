@@ -33,6 +33,5 @@ abstract class requestSender
     public function saveJson(string $json, string $fileName)
     {
         file_put_contents(__DIR__ . "/../public/jsonFiles/$fileName.json", $json);
-
     }
 }

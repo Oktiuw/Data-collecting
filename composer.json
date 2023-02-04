@@ -8,7 +8,8 @@
         "ext-simplexml": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.5",
-        "ext-curl": "*"
+        "ext-curl": "*",
+      "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
