@@ -25,7 +25,6 @@
     "scripts": {
         "start": [
             "php src/createToken.php",
-            "php public/test.php",
             "php public/database.php",
             "php public/territoires.php"
         ]
