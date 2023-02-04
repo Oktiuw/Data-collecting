@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'requestSender.php';
 class postRequestSender extends requestSender
 {
     public function __construct(string $url, array $data = [], array $headers = [])

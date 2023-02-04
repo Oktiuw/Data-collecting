@@ -1,6 +1,7 @@
 <?php
 
-require_once '../src/postRequestSender.php';
+
+require_once 'src/postRequestSender.php';
 $data='{
     "codeTypeTerritoire": "REG",
 
