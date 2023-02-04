@@ -7,10 +7,9 @@ abstract class requestSender
     protected array $data;
     protected array $headers;
 
-    public function __construct(string $url, array $data = [], array $headers = [])
+    public function __construct(string $url, array $headers = [])
     {
         $this->url = $url;
-        $this->data = $data;
         $this->headers = $headers;
         $this->accessToken = get_object_vars(json_decode(file_get_contents(__DIR__ . "/jsonFiles/access_token.json")))['access_token'];
         $this->headers[] = "Authorization: Bearer $this->accessToken";
