@@ -17,6 +17,6 @@ $data='{
 
 }';
 
-$s=new postRequestSender("https://api.pole-emploi.io/partenaire/stats-offres-demandes-emploi/v1/indicateur/stat-demandeurs", ["Content-Type: application/json"], json_decode($data, true), );
+$s=new postRequestSender("https://api.pole-emploi.io/partenaire/stats-offres-demandes-emploi/v1/indicateur/stat-demandeurs", ["Content-Type: application/json"], json_decode($data, true));
 $response=$s->sendPostRequest();
 $s->saveJson($s->xmlToJson($response), 'example');

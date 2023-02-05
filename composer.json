@@ -23,7 +23,7 @@
         }
     ],
     "scripts": {
-        "start": [
+        "db": [
             "php src/createToken.php",
             "php public/database.php",
             "php public/databaseCompletion/territoires.php",
