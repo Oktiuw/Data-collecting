@@ -6,10 +6,10 @@ require_once 'vendor/autoload.php';
 
 $stmt1 = MyPDO::getInstance()->prepare(
     <<<'SQL'
+DROP TABLE IF EXISTS JobIndic;
 DROP TABLE IF EXISTS Activite ;
 DROP TABLE IF EXISTS TypeActivite;
 DROP TABLE IF EXISTS Territoire;
-DROP TABLE IF EXISTS JobIndic;
 CREATE TABLE Territoire(
     codeTerritoire VARCHAR(3) PRIMARY KEY,
     libelleTerritoire VARCHAR(100)
