@@ -6,6 +6,7 @@ class Activite
 {
     private string $codeActivite;
     private string $libelleActivite;
+    private string $codeTypeActivite;
 
     /**
      * @return string
@@ -54,5 +55,4 @@ class Activite
     {
         $this->codeTypeActivite = $codeTypeActivite;
     }
-    private string $codeTypeActivite;
 }

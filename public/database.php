@@ -9,6 +9,7 @@ $stmt1 = MyPDO::getInstance()->prepare(
 DROP TABLE IF EXISTS Activite ;
 DROP TABLE IF EXISTS TypeActivite;
 DROP TABLE IF EXISTS Territoire;
+DROP TABLE IF EXISTS JobIndic;
 CREATE TABLE Territoire(
     codeTerritoire VARCHAR(3) PRIMARY KEY,
     libelleTerritoire VARCHAR(100)
@@ -28,6 +29,15 @@ CREATE TABLE Activite(
     REFERENCES TypeActivite(codeTpActivite)
 );
 
+CREATE TABLE JobIndic(
+    codeTerritore VARCHAR(3),
+    codeActivite VARCHAR(100),
+    libelleIndicateur VARCHAR(300),
+    valeurIndicateur FLOAT,
+    CONSTRAINT PK_JobIndic PRIMARY KEY (codeActivite,codeTerritore),
+    CONSTRAINT FK_JobIndic_Activite FOREIGN KEY (codeActivite) REFERENCES Activite(codeActivite),
+    CONSTRAINT FK_JobIndic_Territoire FOREIGN KEY (codeTerritore) REFERENCES Territoire(codeTerritoire)
+)
 SQL
 );
 
