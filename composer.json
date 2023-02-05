@@ -26,8 +26,9 @@
         "start": [
             "php src/createToken.php",
             "php public/database.php",
-            "php public/territoires.php",
-            "php public/typeActivites.php"
+            "php public/databaseCompletion/territoires.php",
+            "php public/databaseCompletion/typeActivites.php",
+            "php public/databaseCompletion/activites.php"
         ],
         "create:token" :[
             "php src/createToken.php"

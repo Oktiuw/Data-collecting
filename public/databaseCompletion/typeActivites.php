@@ -20,5 +20,3 @@ SQL
 
     $stmt->execute([":cdTpActivite"=>$tp['codeTypeActivite'],":libelleTpActivite"=>$tp['libelleTypeActivite']]);
 }
-
-var_dump(\Entity\Collection\CollectionTypeActivite::findAll());
