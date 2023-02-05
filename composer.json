@@ -26,7 +26,11 @@
         "start": [
             "php src/createToken.php",
             "php public/database.php",
-            "php public/territoires.php"
+            "php public/territoires.php",
+            "php public/typeActivites.php"
+        ],
+        "create:token" :[
+            "php src/createToken.php"
         ]
     }
 }

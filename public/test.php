@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'src/postRequestSender.php';
+require_once 'vendor/autoload.php';
 $data='{
     "codeTypeTerritoire": "REG",
 
