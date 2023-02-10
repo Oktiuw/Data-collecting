@@ -27,7 +27,8 @@
             "php src/createToken.php",
             "php public/database.php",
             "php public/databaseCompletion/territoires.php",
-            "php public/databaseCompletion/trimestre.php"
+            "php public/databaseCompletion/trimestre.php",
+            "php public/databaseCompletion/jobIndic.php"
         ],
         "create:token" :[
             "php src/createToken.php"

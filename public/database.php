@@ -29,9 +29,11 @@ CREATE TABLE IndicateurJob(
     codePeriode VARCHAR(200) ,
     codeTerritoire VARCHAR(200),
     valeurIndic INTEGER,
-    PRIMARY KEY (codeTerritoire,codePeriode),
+    codeTypeTerritoire VARCHAR(20),
+    PRIMARY KEY (codeTerritoire,codePeriode,codeTypeTerritoire),
     FOREIGN KEY (codePeriode) REFERENCES Trimestre(codePeriode),
-    FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire)
+    FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire),
+    FOREIGN KEY (codeTypeTerritoire) REFERENCES Territoire(codeTypeTerritoire)
 );
 INSERT INTO TypeTerritoire VALUES ('REG','Région française');
 INSERT INTO TypeTerritoire VALUES ('DEP','Département français');
