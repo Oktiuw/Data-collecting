@@ -4,38 +4,55 @@ namespace Entity;
 
 class Territoire
 {
-    private string $cdTerritoire;
-    private string $libTerritoire;
+    private string $codeTerritoire;
+    private string $libelleTerritoire;
+    private string $codeTypeTerritoire;
 
     /**
      * @return string
      */
-    public function getCdTerritoire(): string
+    public function getCodeTerritoire(): string
     {
-        return $this->cdTerritoire;
+        return $this->codeTerritoire;
     }
 
     /**
-     * @param string $cdTerritoire
+     * @param string $codeTerritoire
      */
-    public function setCdTerritoire(string $cdTerritoire): void
+    public function setCodeTerritoire(string $codeTerritoire): void
     {
-        $this->cdTerritoire = $cdTerritoire;
+        $this->codeTerritoire = $codeTerritoire;
     }
 
     /**
      * @return string
      */
-    public function getLibTerritoire(): string
+    public function getLibelleTerritoire(): string
     {
-        return $this->libTerritoire;
+        return $this->libelleTerritoire;
     }
 
     /**
-     * @param string $libTerritoire
+     * @param string $libelleTerritoire
      */
-    public function setLibTerritoire(string $libTerritoire): void
+    public function setLibelleTerritoire(string $libelleTerritoire): void
     {
-        $this->libTerritoire = $libTerritoire;
+        $this->libelleTerritoire = $libelleTerritoire;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCodeTypeTerritoire(): string
+    {
+        return $this->codeTypeTerritoire;
+    }
+
+    /**
+     * @param string $codeTypeTerritoire
+     */
+    public function setCodeTypeTerritoire(string $codeTypeTerritoire): void
+    {
+        $this->codeTypeTerritoire = $codeTypeTerritoire;
     }
 }
