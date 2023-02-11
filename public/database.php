@@ -36,12 +36,6 @@ CREATE TABLE IndicateurJob(
     FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire),
     FOREIGN KEY (codeTypeTerritoire) REFERENCES Territoire(codeTypeTerritoire)
 );
-CREATE TABLE AOM(
-    codePeriode VARCHAR(200) ,
-    codeTerritoire VARCHAR(200),
-    valeurIndic INTEGER,
-    codeTypeTerritoire VARCHAR(20),
-);
 INSERT INTO TypeTerritoire VALUES ('REG','Région française');
 INSERT INTO TypeTerritoire VALUES ('DEP','Département français');
 

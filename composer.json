@@ -23,8 +23,9 @@
         }
     ],
     "scripts": {
+        "start": ["php src/createToken.php",
+        "php public/test.php"],
         "db": [
-            "php src/createToken.php",
             "php public/database.php",
             "php public/databaseCompletion/territoires.php",
             "php public/databaseCompletion/trimestre.php",
