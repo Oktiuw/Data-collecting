@@ -27,9 +27,9 @@
         "php public/test.php"],
         "db": [
             "php public/database.php",
-            "php public/databaseCompletion/territoires.php",
-            "php public/databaseCompletion/trimestre.php",
-            "php public/databaseCompletion/jobIndic.php"
+          "php public/databaseCompletion/Travail/territoires.php",
+          "php public/databaseCompletion/Travail/trimestre.php",
+          "php public/databaseCompletion/Travail/jobIndic.php"
         ],
         "create:token" :[
             "php src/createToken.php"
