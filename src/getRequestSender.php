@@ -17,7 +17,6 @@ class getRequestSender extends requestSender
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $this->getHeaders());
         $response = curl_exec($ch);
-        var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));
         curl_close($ch);
         return $response;
     }

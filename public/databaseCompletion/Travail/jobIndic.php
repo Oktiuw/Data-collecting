@@ -10,6 +10,7 @@ require_once 'vendor/autoload.php';
 $terri= CollectionTerritoire::findAll();
 
 $compteur=0;
+$listeValeur=[];
 foreach ($terri as $item) {
     $data='{
   "codeTypeTerritoire": "'.$item->getCodeTypeTerritoire().'",
@@ -27,13 +28,25 @@ foreach ($terri as $item) {
     if (array_key_exists('listeValeursParPeriode', json_decode($response, true))) {
         $r=json_decode($response, true)['listeValeursParPeriode'];
         foreach ($r as $value) {
+            $listeValeur[] = $value['valeurPrincipaleNom'];
             $stmt = MyPDO::getInstance()->prepare(
                 <<<'SQL'
-INSERT INTO Informations VALUES (:cdP,:cdTerri,:val,:cdTpTerri)
+INSERT INTO Informations VALUES (:cdP,:cdTerri,:val,:cdTpTerri,NULL)
 SQL
             );
-
             $stmt->execute([":cdP"=>$value['codePeriode'],":cdTerri"=>$value['codeTerritoire'],":val"=>$value['valeurPrincipaleNom'],':cdTpTerri'=>$value['codeTypeTerritoire']]);
+            if (count($listeValeur)===4)
+            {
+                $moyenne=array_sum($listeValeur)/4;
+                $stmt = MyPDO::getInstance()->prepare(
+                    <<<'SQL'
+INSERT INTO Informations VALUES (:cdP,:cdTerri,:val,:cdTpTerri,NULL)
+SQL
+                );
+                $stmt->execute([":cdP"=>substr($value['codePeriode'],0,4),":cdTerri"=>$value['codeTerritoire'],":val"=>$moyenne,':cdTpTerri'=>$value['codeTypeTerritoire']]);
+                $listeValeur=[];
+
+            }
         }
     }
 

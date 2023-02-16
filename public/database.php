@@ -29,8 +29,9 @@ CREATE TABLE Periode(
 CREATE TABLE Informations(
     codePeriode VARCHAR(200) ,
     codeTerritoire VARCHAR(200),
-    valeurIndic INTEGER,
+    valeurIndic FLOAT,
     codeTypeTerritoire VARCHAR(20),
+    population INTEGER,
     PRIMARY KEY (codeTerritoire,codePeriode,codeTypeTerritoire),
     FOREIGN KEY (codePeriode) REFERENCES Periode(codePeriode),
     FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire),

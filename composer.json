@@ -29,8 +29,9 @@
             "php src/createTokenInsee.php",
             "php public/database.php",
           "php public/databaseCompletion/Travail/territoires.php",
-          "php public/databaseCompletion/Travail/trimestre.php",
-          "php public/databaseCompletion/Travail/jobIndic.php"
+            "php public/databaseCompletion/Travail/periode.php",
+          "php public/databaseCompletion/Travail/jobIndic.php",
+            "php public/databaseCompletion/Insee/totalPop.php"
         ],
         "create:token" :[
             "php src/createToken.php"
