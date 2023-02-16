@@ -23,10 +23,10 @@
         }
     ],
     "scripts": {
-        "start": "php public/test.php",
-        "db": [
-            "php src/createToken.php",
+        "start": ["php src/createToken.php",
             "php src/createTokenInsee.php",
+            "php public/test.php"],
+        "db": [
             "php public/database.php",
           "php public/databaseCompletion/Travail/territoires.php",
             "php public/databaseCompletion/Travail/periode.php",
