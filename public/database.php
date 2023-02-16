@@ -6,11 +6,11 @@ require_once 'vendor/autoload.php';
 
 $stmt1 = MyPDO::getInstance()->prepare(
     <<<'SQL'
-DROP TABLE IF EXISTS AOM;
+DROP TABLE IF EXISTS Informations;
 DROP TABLE IF EXISTS IndicateurJob;
 DROP TABLE IF EXISTS Territoire;
 DROP TABLE IF EXISTS TypeTerritoire;
-DROP TABLE IF EXISTS Trimestre;
+DROP TABLE IF EXISTS Periode;
 CREATE TABLE TypeTerritoire(
     codeTypeTerritoire VARCHAR(20) PRIMARY KEY,
     libelleTypeTerritoire VARCHAR(200)
@@ -22,17 +22,17 @@ CREATE TABLE Territoire(
     PRIMARY KEY (codeTerritoire,codeTypeTerritoire),
     FOREIGN KEY (codeTypeTerritoire) REFERENCES TypeTerritoire(codeTypeTerritoire)
 );
-CREATE TABLE Trimestre(
+CREATE TABLE Periode(
     codePeriode VARCHAR(200) PRIMARY KEY ,
     libellePeriode VARCHAR(200)
 );
-CREATE TABLE IndicateurJob(
+CREATE TABLE Informations(
     codePeriode VARCHAR(200) ,
     codeTerritoire VARCHAR(200),
     valeurIndic INTEGER,
     codeTypeTerritoire VARCHAR(20),
     PRIMARY KEY (codeTerritoire,codePeriode,codeTypeTerritoire),
-    FOREIGN KEY (codePeriode) REFERENCES Trimestre(codePeriode),
+    FOREIGN KEY (codePeriode) REFERENCES Periode(codePeriode),
     FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire),
     FOREIGN KEY (codeTypeTerritoire) REFERENCES Territoire(codeTypeTerritoire)
 );

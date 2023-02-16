@@ -3,10 +3,10 @@
 require_once 'requestSender.php';
 class postRequestSender extends requestSender
 {
-    public function __construct(string $url, array $headers = [], array $data = [])
+    public function __construct(string $url, array $headers = [], array $data = [],bool $isInsee = False)
     {
         $this->data = $data;
-        parent::__construct($url, $headers);
+        parent::__construct($url, $headers,$isInsee);
     }
 
     public function sendPostRequest(): bool|string

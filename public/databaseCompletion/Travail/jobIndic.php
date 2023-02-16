@@ -29,7 +29,7 @@ foreach ($terri as $item) {
         foreach ($r as $value) {
             $stmt = MyPDO::getInstance()->prepare(
                 <<<'SQL'
-INSERT INTO IndicateurJob VALUES (:cdP,:cdTerri,:val,:cdTpTerri)
+INSERT INTO Informations VALUES (:cdP,:cdTerri,:val,:cdTpTerri)
 SQL
             );
 

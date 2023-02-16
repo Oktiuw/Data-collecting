@@ -7,11 +7,18 @@ abstract class requestSender
     protected array $data;
     protected array $headers;
 
-    public function __construct(string $url, array $headers = [])
+    public function __construct(string $url, array $headers = [],bool $isInsee=false)
     {
         $this->url = $url;
         $this->headers = $headers;
-        $this->accessToken = get_object_vars(json_decode(file_get_contents(__DIR__ . "/jsonFiles/access_token.json")))['access_token'];
+        if ($isInsee)
+        {
+            $this->accessToken = get_object_vars(json_decode(file_get_contents(__DIR__ . "/jsonFiles/access_tokenInsee.json")))['access_token'];
+        }
+        else
+        {
+            $this->accessToken = get_object_vars(json_decode(file_get_contents(__DIR__ . "/jsonFiles/access_token.json")))['access_token'];
+        }
         $this->headers[] = "Authorization: Bearer $this->accessToken";
     }
 
