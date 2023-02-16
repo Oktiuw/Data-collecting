@@ -36,5 +36,8 @@
         "create:token" :[
             "php src/createToken.php"
         ]
+    },
+    "config": {
+        "process-timeout": 1000
     }
 }
