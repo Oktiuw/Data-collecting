@@ -27,7 +27,7 @@ for ($i=0;$i<3;$i++){
         {
             $stmt = MyPDO::getInstance()->prepare(
                 <<<'SQL'
-            UPDATE Informations
+            UPDATE InfosJob
             SET population = :pop
             WHERE codePeriode=:cdP and codeTerritoire=:cdTerri and codeTypeTerritoire=:cdTpTerri
             SQL
