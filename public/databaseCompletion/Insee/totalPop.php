@@ -11,13 +11,14 @@ require_once 'vendor/autoload.php';
 
 
 $terri= CollectionTerritoire::findAll();
-$firstYear=2022;
-$nextYear=2019;
+$firstYear=2023;
+$nextYear=2020;
 
 for ($i=0;$i<3;$i++){
-    $firstYear-=$i;
-    $nextYear-=$i;
+    $firstYear-=1;
+    $nextYear-=1;
     foreach ($terri as $item) {
+        query:
         $url="https://api.insee.fr/donnees-locales/V0.1/donnees/geo-SEXE-AGE15_15_90@GEO$firstYear"."RP"."$nextYear/{$item->getCodeTypeTerritoire()}-{$item->getCodeTerritoire()}.ENS.ENS";
         $g=new getRequestSender(
             $url,
@@ -32,7 +33,13 @@ for ($i=0;$i<3;$i++){
             WHERE codePeriode=:cdP and codeTerritoire=:cdTerri and codeTypeTerritoire=:cdTpTerri
             SQL
             );
-
             $stmt->execute([":cdP"=>$nextYear,":cdTerri"=>$item->getCodeTerritoire(),':cdTpTerri'=>$item->getCodeTypeTerritoire(),':pop'=>$response['Cellule']['Valeur']]);
-}
+        }
+        else{
+            if ($response && array_key_exists("fault",$response))
+            {
+                sleep(1);
+                goto query;
+            }
+        }
 }}

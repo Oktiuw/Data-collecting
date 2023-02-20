@@ -48,6 +48,7 @@ CREATE TABLE InfosLogement(
     nbLogements1VOIT INTEGER,
     nbLogements2VOIT INTEGER,
     nbLogements3VOIT INTEGER,
+    nbLogementsAvecPlacesResa INTEGER,
     PRIMARY KEY (codePeriode,codeTerritoire,codeTypeTerritoire),
     FOREIGN KEY (codePeriode) REFERENCES Periode(codePeriode),
     FOREIGN KEY (codeTerritoire) REFERENCES  Territoire(codeTerritoire),
