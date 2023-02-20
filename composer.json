@@ -40,6 +40,6 @@
         ]
     },
     "config": {
-        "process-timeout": 1000
+        "process-timeout": 10000
     }
 }
