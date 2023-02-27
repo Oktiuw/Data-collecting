@@ -30,7 +30,7 @@ for ($i=0;$i<4;$i++){
             {
                 $stmt = MyPDO::getInstance()->prepare(
                     <<<'SQL'
-            INSERT INTO InfosJob VALUES (:cdP,:cdTerri,NULL,:cdTpTerri,:pop,NULL,NULL,NULL,NULL,NULL)
+            INSERT INTO InfosJob VALUES (:cdP,:cdTerri,NULL,:cdTpTerri,:pop,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
             SQL);
             }
             else {

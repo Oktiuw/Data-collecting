@@ -53,16 +53,11 @@ for ($i=0;$i<4;$i++){
                     $stmt = MyPDO::getInstance()->prepare(
                         <<<'SQL'
     UPDATE InfosJob
-    SET nbLogements0VOIT=:nb0, nbLogements1VOIT=:nb1,nbLogements2VOIT=:nb2,nbLogements3VOIT=:nb3,nbLogementsAvecPlacesResa=:resa
+    SET nbLogements0VOIT=:nb0, nbLogements1VOIT=:nb1,nbLogements2VOIT=:nb2,nbLogements3VOITOuPlus=:nb3,nbLogementsAvecPlacesResa=:resa
     WHERE codePeriode=:cdP and codeTerritoire=:cdTerri and codeTypeTerritoire=:cdTpTerri
     SQL
                     );
                     $stmt->execute([":cdP"=>$nextYear,":cdTerri"=>$item->getCodeTerritoire(),':cdTpTerri'=>$item->getCodeTypeTerritoire(),':nb0'=>$listeVal[0],':nb1'=>$listeVal[1],':nb2'=>$listeVal[2],':nb3'=>$listeVal[3],':resa'=>$listeVal[4]]);
             }
-            }
-                else{
-                    var_dump($item->getCodeTerritoire());
-                    var_dump($item->getCodeTypeTerritoire());
-                    var_dump($response);
-                }}}
+            }}}
 }
