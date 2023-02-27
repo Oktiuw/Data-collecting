@@ -14,7 +14,7 @@ $terri= CollectionTerritoire::findAll();
 $firstYear=2023;
 $nextYear=2020;
 
-for ($i=0;$i<3;$i++){
+for ($i=0;$i<4;$i++){
     $firstYear-=1;
     $nextYear-=1;
     foreach ($terri as $item) {
@@ -26,13 +26,22 @@ for ($i=0;$i<3;$i++){
         $response=json_decode($g->sendGetRequest(),true);
         if ($response and array_key_exists("Cellule",$response))
         {
-            $stmt = MyPDO::getInstance()->prepare(
-                <<<'SQL'
+            if ($nextYear<2018)
+            {
+                $stmt = MyPDO::getInstance()->prepare(
+                    <<<'SQL'
+            INSERT INTO InfosJob VALUES (:cdP,:cdTerri,NULL,:cdTpTerri,:pop,NULL,NULL,NULL,NULL,NULL)
+            SQL);
+            }
+            else {
+                $stmt = MyPDO::getInstance()->prepare(
+                    <<<'SQL'
             UPDATE InfosJob
             SET population = :pop
             WHERE codePeriode=:cdP and codeTerritoire=:cdTerri and codeTypeTerritoire=:cdTpTerri
             SQL
-            );
+                );
+            }
             $stmt->execute([":cdP"=>$nextYear,":cdTerri"=>$item->getCodeTerritoire(),':cdTpTerri'=>$item->getCodeTypeTerritoire(),':pop'=>$response['Cellule']['Valeur']]);
         }
         else{

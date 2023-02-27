@@ -6,14 +6,12 @@ use Entity\Collection\CollectionTerritoire;
 require_once 'vendor/autoload.php';
 
 
-require_once 'vendor/autoload.php';
-
 
 
 $terri= CollectionTerritoire::findAll();
 $firstYear=2023;
 $nextYear=2020;
-for ($i=0;$i<3;$i++){
+for ($i=0;$i<4;$i++){
     $firstYear-=1;
     $nextYear-=1;
     foreach ($terri as $item) {
@@ -54,10 +52,17 @@ for ($i=0;$i<3;$i++){
                     $listeVal[]=$response['Cellule']['Valeur'];
                     $stmt = MyPDO::getInstance()->prepare(
                         <<<'SQL'
-    INSERT INTO InfosLogement VALUES (:cdP,:cdTerri,:cdTpTerri,:nb0,:nb1,:nb2,:nb3,:resa)
+    UPDATE InfosJob
+    SET nbLogements0VOIT=:nb0, nbLogements1VOIT=:nb1,nbLogements2VOIT=:nb2,nbLogements3VOIT=:nb3,nbLogementsAvecPlacesResa=:resa
+    WHERE codePeriode=:cdP and codeTerritoire=:cdTerri and codeTypeTerritoire=:cdTpTerri
     SQL
                     );
                     $stmt->execute([":cdP"=>$nextYear,":cdTerri"=>$item->getCodeTerritoire(),':cdTpTerri'=>$item->getCodeTypeTerritoire(),':nb0'=>$listeVal[0],':nb1'=>$listeVal[1],':nb2'=>$listeVal[2],':nb3'=>$listeVal[3],':resa'=>$listeVal[4]]);
             }
-            }}}
+            }
+                else{
+                    var_dump($item->getCodeTerritoire());
+                    var_dump($item->getCodeTypeTerritoire());
+                    var_dump($response);
+                }}}
 }
