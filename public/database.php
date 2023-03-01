@@ -30,8 +30,8 @@ CREATE TABLE Periode(
 CREATE TABLE InfosJob(
     codePeriode VARCHAR(200) ,
     codeTerritoire VARCHAR(200),
-    valeurIndic FLOAT,
     codeTypeTerritoire VARCHAR(20),
+    valeurIndic FLOAT,
     population INTEGER,
     nbLogements0VOIT INTEGER,
     nbLogements1VOIT INTEGER,

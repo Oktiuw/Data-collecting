@@ -14,7 +14,7 @@ $terri= CollectionTerritoire::findAll();
 $firstYear=2023;
 $nextYear=2020;
 
-for ($i=0;$i<4;$i++){
+for ($i=0;$i<4;$i++) {
     $firstYear-=1;
     $nextYear-=1;
     foreach ($terri as $item) {
@@ -22,18 +22,18 @@ for ($i=0;$i<4;$i++){
         $url="https://api.insee.fr/donnees-locales/V0.1/donnees/geo-SEXE-AGE15_15_90@GEO$firstYear"."RP"."$nextYear/{$item->getCodeTypeTerritoire()}-{$item->getCodeTerritoire()}.ENS.ENS";
         $g=new getRequestSender(
             $url,
-            ["Accept: application/json"],true);
-        $response=json_decode($g->sendGetRequest(),true);
-        if ($response and array_key_exists("Cellule",$response))
-        {
-            if ($nextYear<2018)
-            {
+            ["Accept: application/json"],
+            true
+        );
+        $response=json_decode($g->sendGetRequest(), true);
+        if ($response and array_key_exists("Cellule", $response)) {
+            if ($nextYear<2018) {
                 $stmt = MyPDO::getInstance()->prepare(
                     <<<'SQL'
-            INSERT INTO InfosJob VALUES (:cdP,:cdTerri,NULL,:cdTpTerri,:pop,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
-            SQL);
-            }
-            else {
+            INSERT INTO InfosJob VALUES (:cdP,:cdTerri,:cdTpTerri,NULL,:pop,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+            SQL
+                );
+            } else {
                 $stmt = MyPDO::getInstance()->prepare(
                     <<<'SQL'
             UPDATE InfosJob
@@ -43,12 +43,11 @@ for ($i=0;$i<4;$i++){
                 );
             }
             $stmt->execute([":cdP"=>$nextYear,":cdTerri"=>$item->getCodeTerritoire(),':cdTpTerri'=>$item->getCodeTypeTerritoire(),':pop'=>$response['Cellule']['Valeur']]);
-        }
-        else{
-            if ($response && array_key_exists("fault",$response))
-            {
+        } else {
+            if ($response && array_key_exists("fault", $response)) {
                 sleep(1);
                 goto query;
             }
         }
-}}
+    }
+}
