@@ -18,6 +18,7 @@ CREATE TABLE Territoire(
     codeTerritoire VARCHAR(3),
     libelleTerritoire VARCHAR(100),
     codeTypeTerritoire VARCHAR(20),
+    geoJson JSON,
     PRIMARY KEY (codeTerritoire,codeTypeTerritoire),
     FOREIGN KEY (codeTypeTerritoire) REFERENCES TypeTerritoire(codeTypeTerritoire)
 );

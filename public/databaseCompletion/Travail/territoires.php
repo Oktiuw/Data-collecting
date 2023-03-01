@@ -15,7 +15,7 @@ $r=json_decode($r, true)['territoires'];
 foreach ($r as $terri) {
     $stmt = MyPDO::getInstance()->prepare(
         <<<'SQL'
-INSERT INTO Territoire VALUES (:cdTerritoire,:libTerritoire,:cdTypeTerri)
+INSERT INTO Territoire VALUES (:cdTerritoire,:libTerritoire,:cdTypeTerri,NULL)
 SQL
     );
 
@@ -30,7 +30,7 @@ $r=json_decode($r, true)['territoires'];
 foreach ($r as $terri) {
     $stmt = MyPDO::getInstance()->prepare(
         <<<'SQL'
-INSERT INTO Territoire VALUES (:cdTerritoire,:libTerritoire,:cdTypeTerri)
+INSERT INTO Territoire VALUES (:cdTerritoire,:libTerritoire,:cdTypeTerri,NULL)
 SQL
     );
 
