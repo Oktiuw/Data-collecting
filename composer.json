@@ -31,6 +31,7 @@
             "php public/database.php",
           "php public/databaseCompletion/Travail/territoires.php",
             "php public/databaseCompletion/geojson/Regions.php",
+            "php public/databaseCompletion/geojson/Departements.php",
             "php public/databaseCompletion/Travail/periode.php",
           "php public/databaseCompletion/Travail/jobIndic.php",
             "php public/databaseCompletion/Insee/totalPop.php",
