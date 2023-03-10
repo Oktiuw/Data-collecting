@@ -54,18 +54,17 @@ try {
     } else {
         // si on est dans un autre processus on lance la requete
         $response = $g->sendGetRequest();
-        var_dump($response);
-        exit();
+        $response=json_decode($response,true);
+        if ($response and array_key_exists("Cellule", $response)) {
+            exec("composer db");
+        } else {
+            var_dump($response);
+            echo "Erreur de réponse de l'API" . PHP_EOL;
+            exit(1);
+        }
     }
-    $response = json_decode($response, true);
-    if ($response and array_key_exists("Cellule", $response)) {
-        exec("composer db");
-    } else {
-        var_dump($response);
-        echo "Erreur de réponse de l'API" . PHP_EOL;
-        exit(1);
-    }
-} catch (ConnectException $e) {
+}
+catch (ConnectException $e) {
     echo "Erreur de connexion à l'API: " . $e->getMessage() . PHP_EOL;
     exit(1);
 } catch (RequestException $e) {
