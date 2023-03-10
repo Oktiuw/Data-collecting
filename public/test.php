@@ -54,6 +54,7 @@ try {
     } else {
         // si on est dans un autre processus on lance la requete
         $response = $g->sendGetRequest();
+        var_dump($response);
         exit();
     }
     $response = json_decode($response, true);
