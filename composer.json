@@ -10,7 +10,8 @@
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.5",
         "ext-curl": "*",
-      "ext-pdo": "*"
+      "ext-pdo": "*",
+        "ext-pcntl": "*"
     },
     "autoload": {
         "psr-4": {

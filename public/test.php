@@ -1,5 +1,8 @@
 <?php
 
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ClientException;
 
 require_once 'vendor/autoload.php';
 $data='{
@@ -21,6 +24,50 @@ $s=new postRequestSender("https://api.pole-emploi.io/partenaire/stats-offres-dem
 $response=$s->sendPostRequest();
 if ($response==="")
 {
+    echo "probleme connexion API Pole emploi";
     exit;
 }
-exec("composer db");
+
+
+
+
+
+$url = "https://api.insee.fr/donnees-locales/V0.1/donnees/geo-SEXE-AGE15_15_90@GEO2022RP2019/DEP-01.ENS.ENS";
+
+try {
+    $g = new getRequestSender(
+        $url,
+        ["Accept: application/json"],
+        true
+    );
+    // processus parent
+    $pid = pcntl_fork();
+    // si on est dedans on mesure le temps de la requete
+    if ($pid) {
+        $start = microtime(true);
+        pcntl_waitpid($pid, $status);
+        $time_elapsed = microtime(true) - $start;
+        if ($time_elapsed > 5) {
+            echo "La requête a pris trop de temps à répondre (>5s)" . PHP_EOL;
+            exit(1);
+        }
+    } else {
+        // si on est dans un autre processus on lance la requete
+        $response = $g->sendGetRequest();
+        exit();
+    }
+    $response = json_decode($response, true);
+    if ($response and array_key_exists("Cellule", $response)) {
+        exec("composer db");
+    } else {
+        var_dump($response);
+        echo "Erreur de réponse de l'API" . PHP_EOL;
+        exit(1);
+    }
+} catch (ConnectException $e) {
+    echo "Erreur de connexion à l'API: " . $e->getMessage() . PHP_EOL;
+    exit(1);
+} catch (RequestException $e) {
+    echo "Erreur de requête à l'API: " . $e->getMessage() . PHP_EOL;
+    exit(1);
+}
