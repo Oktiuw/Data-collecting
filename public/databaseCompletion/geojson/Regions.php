@@ -15,6 +15,6 @@ foreach ($data as $r) {
     WHERE codeTerritoire=:cdP and codeTypeTerritoire='REG'
     SQL
         );
-        $stmt->execute([":cdP"=>$r['properties']['code'],':nb0'=>json_encode($r['geometry']['coordinates'])]);
+        $stmt->execute([":cdP"=>$r['properties']['code'],':nb0'=>json_encode($r)]);
     }
 }
