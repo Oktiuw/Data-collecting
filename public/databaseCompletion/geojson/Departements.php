@@ -11,10 +11,10 @@ foreach ($data as $r) {
         $stmt = MyPDO::getInstance()->prepare(
             <<<'SQL'
     UPDATE Territoire
-    SET geoJson=:nb0
+    SET geoJson=:nb0, libelleTerritoire=:lib
     WHERE codeTerritoire=:cdP and codeTypeTerritoire='DEP'
     SQL
         );
-        $stmt->execute([":cdP"=>$r['properties']['code'],':nb0'=>json_encode($r)]);
+        $stmt->execute([":cdP"=>$r['properties']['code'],':nb0'=>json_encode($r),':lib'=>$r['properties']['nom']]);
     }
 }
