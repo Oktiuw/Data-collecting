@@ -27,7 +27,7 @@ for ($i=0;$i<4;$i++) {
         );
         $response=json_decode($g->sendGetRequest(), true);
         if ($response and array_key_exists("Cellule", $response)) {
-            if ($nextYear<2018) {
+            if ($nextYear<2019) {
                 $stmt = MyPDO::getInstance()->prepare(
                     <<<'SQL'
             INSERT INTO InfosJob VALUES (:cdP,:cdTerri,:cdTpTerri,NULL,:pop,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
