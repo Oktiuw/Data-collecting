@@ -44,19 +44,27 @@ try {
     $pid = pcntl_fork();
     // si on est dedans on mesure le temps de la requete
     if ($pid) {
-        $start = microtime(true);
         pcntl_waitpid($pid, $status);
-        $time_elapsed = microtime(true) - $start;
-        if ($time_elapsed > 5) {
-            echo "La requête a pris trop de temps à répondre (>5s)" . PHP_EOL;
+        if (pcntl_wifexited($status)) {
+            $exitCode = pcntl_wexitstatus($status);
+            if ($exitCode === 0) {
+                echo "Tout s'est bien déroulé";
+            } else {
+                $start=microtime(true);
+                $time_elapsed = microtime(true) - $start;
+                if ($time_elapsed > 5) {
+                    echo "La requête a pris trop de temps à répondre (>5s)" . PHP_EOL;
+                    exit(1);
+                }
+            }
+        } else {
+            echo "Le processus enfant a échoué" . PHP_EOL;
             exit(1);
         }
     } else {
-        // si on est dans un autre processus on lance la requete
         $response = $g->sendGetRequest();
         $response=json_decode($response,true);
         if ($response and array_key_exists("Cellule", $response)) {
-            exec("kill -9 $pid");
             exec("composer db");
         } else {
             var_dump($response);
