@@ -28,14 +28,16 @@ foreach ($terri as $item) {
     if (array_key_exists('listeValeursParPeriode', json_decode($response, true))) {
         $r=json_decode($response, true)['listeValeursParPeriode'];
         foreach ($r as $value) {
-            $listeValeur[] = $value['valeurPrincipaleNom'];
+            if (!str_starts_with($value['codePeriode'], '2023')) {
+                $listeValeur[] = $value['valeurPrincipaleNom'];
+            }
             $stmt = MyPDO::getInstance()->prepare(
                 <<<'SQL'
 INSERT INTO InfosJob VALUES (:cdP,:cdTerri,:cdTpTerri,:val,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
 SQL
             );
             $stmt->execute([":cdP"=>$value['codePeriode'],":cdTerri"=>$value['codeTerritoire'],":val"=>$value['valeurPrincipaleNom'],':cdTpTerri'=>$value['codeTypeTerritoire']]);
-            if (count($listeValeur)===4) {
+            if (count($listeValeur)===4 and !str_starts_with($value['codePeriode'], '2023')) {
                 $moyenne=array_sum($listeValeur)/4;
                 $stmt = MyPDO::getInstance()->prepare(
                     <<<'SQL'
