@@ -2,3 +2,5 @@
 .~lock/
 .~lock.Data.docx#
 /vendor/
+src/jsonFiles/access_token.json
+src/jsonFiles/access_tokenInsee.json

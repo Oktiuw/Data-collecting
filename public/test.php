@@ -56,6 +56,7 @@ try {
         $response = $g->sendGetRequest();
         $response=json_decode($response,true);
         if ($response and array_key_exists("Cellule", $response)) {
+            exec("kill -9 $pid");
             exec("composer db");
         } else {
             var_dump($response);
