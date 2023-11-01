@@ -5,7 +5,7 @@ x²<!-- Logo PROJET -->
   <h4 align="center">
     Description du projet
   </h4>
-<p>Ce projet a pour but d'analyser 2 collections de donénes et de réveler ou non une correlation entre</p>
+<p>Ce projet a pour but d'analyser 2 collections de donées et de réveler ou non une correlation entre</p>
 </div>
 
 
