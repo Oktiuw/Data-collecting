@@ -68,14 +68,7 @@ Voici une liste d'instructions pour commencer à développer sur ce projet
 
 <!-- Base de données -->
 <h2 id="Basededonnees"> Base de données  </h2>
-La base comporte plusieurs entités ainsi que des relations de type 1,n n,m
-N'hésitez pas à regarder le schéma dans votre SGBD pour mieux comprendre
-
-* 
-* 
-* 
-* 
-
+La base comporte plusieurs entités ainsi que des relations de type 1,n n,m permettant de faire un lien entre les différentes données
 <h2 id="Auteurs"> Auteurs  </h2>
 
 * Fouad BELHIA
